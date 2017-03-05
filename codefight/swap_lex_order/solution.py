@@ -1,11 +1,8 @@
 
 
-def swapLexOrder(str_, pairs_):
-    pairs = set([tuple(sorted(pair)) for pair in pairs_])
-
+def swapLexOrder(str_, pairs):
     visited = set()
-    discovered = set()
-    discovered.add(str_)
+    discovered = set([str_])
     lex_max = str_
 
     while len(discovered) > 0:
@@ -24,5 +21,8 @@ def swapLexOrder(str_, pairs_):
 
 
 def str_swap(str_, i, j):
-    return str_[:i] + str_[j] + str_[i+1:j] + str_[i] + str_[j+1:]
+    if i > j:
+        return str_swap(str_, j, i)
+    else:
+        return str_[:i] + str_[j] + str_[i+1:j] + str_[i] + str_[j+1:]
 
